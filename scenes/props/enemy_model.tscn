@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dp1ps0eio2hpk"]
+
+[ext_resource type="PackedScene" uid="uid://bgjkpypodvsqm" path="res://models/enemy/enemy.glb" id="1_model"]
+
+[node name="EnemyModel" unique_id=1207276375 instance=ExtResource("1_model")]

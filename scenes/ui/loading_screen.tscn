@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://c6s77ps0l36u"]
+
+[ext_resource type="Script" path="res://scenes/ui/loading_screen.gd" id="1_script"]
+[ext_resource type="FontFile" uid="uid://cs7d5y38hlbxi" path="res://UInesneleri/Font/Kenney Future.ttf" id="2_font"]
+
+[sub_resource type="Gradient" id="Gradient_1"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(0, 0.8, 1, 1, 0.1, 0.4, 0.8, 1, 0.05, 0.1, 0.3, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1"]
+gradient = SubResource("Gradient_1")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_min = 8.0
+scale_max = 20.0
+color = Color(0.6, 0.9, 1, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BG"]
+bg_color = Color(0.1, 0.2, 0.4, 0.8)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BarBG"]
+bg_color = Color(0, 0, 0, 0.3)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_BarFill"]
+bg_color = Color(0, 0.8, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.5)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 5
+shadow_color = Color(0, 0.5, 1, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_Status"]
+font = ExtResource("2_font")
+font_size = 32
+font_color = Color(0, 0.9, 1, 1)
+outline_size = 8
+outline_color = Color(0, 0.2, 0.4, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_Tip"]
+font = ExtResource("2_font")
+font_size = 18
+font_color = Color(1, 1, 1, 0.8)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_Loading"]
+font = ExtResource("2_font")
+font_size = 64
+font_color = Color(1, 0.9, 0, 1)
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.5)
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1")
+expand_mode = 1
+
+[node name="Particles" type="GPUParticles2D" parent="Background"]
+position = Vector2(960, -50)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_1")
+lifetime = 5.0
+preprocess = 5.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="LoadingText" type="Label" parent="CenterContainer/VBox"]
+layout_mode = 2
+text = "YUKLENIYOR..."
+label_settings = SubResource("LabelSettings_Loading")
+horizontal_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_BG")
+
+[node name="Margin" type="MarginContainer" parent="CenterContainer/VBox/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBox/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/VBox/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "DUNYA HAZIRLANIYOR..."
+label_settings = SubResource("LabelSettings_Status")
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/VBox/Panel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_BarBG")
+theme_override_styles/fill = SubResource("StyleBoxFlat_BarFill")
+value = 50.0
+show_percentage = false
+
+[node name="TipLabel" type="Label" parent="CenterContainer/VBox/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "IPUCU: Puan kazanmak icin borulari tamir et."
+label_settings = SubResource("LabelSettings_Tip")
+horizontal_alignment = 1
+autowrap_mode = 2

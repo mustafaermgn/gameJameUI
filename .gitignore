@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+model_strategy.md
+/*.gd
+*.bak
+.godot/
+/android/
+*.import
+*.gd.uid
+.export/
+*.tmp
+*.translation
+._*
+.DS_Store
+Thumbs.db

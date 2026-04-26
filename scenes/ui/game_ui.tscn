@@ -1,0 +1,441 @@
+[gd_scene format=3 uid="uid://b5evqkmm6m1m0"]
+
+[ext_resource type="FontFile" uid="uid://cs7d5y38hlbxi" path="res://UInesneleri/Font/Kenney Future.ttf" id="1_font"]
+[ext_resource type="Script" uid="uid://dub31vc0nm57q" path="res://scenes/ui/game_ui.gd" id="2_script"]
+[ext_resource type="AudioStream" uid="uid://jmy7rm6730tp" path="res://UInesneleri/Sounds/switch-a.ogg" id="3_sound"]
+[ext_resource type="Texture2D" uid="uid://ddqstr00uf8j1" path="res://assets/icons/aritici.png" id="11_aritici"]
+[ext_resource type="Texture2D" uid="uid://cnigiarwlw686" path="res://assets/icons/tuzdanAritici.png" id="12_tuzdan"]
+[ext_resource type="Texture2D" uid="uid://p8dwdw08elt" path="res://assets/icons/pompa.png" id="13_pompa"]
+[ext_resource type="Texture2D" uid="uid://ddhmuojwqipya" path="res://assets/icons/taret.png" id="14_taret"]
+[ext_resource type="Texture2D" uid="uid://clrfk8oq7x1o6" path="res://assets/icons/bomb.png" id="15_bomba"]
+[ext_resource type="Texture2D" uid="uid://7gnmpfm6sf40" path="res://assets/icons/drone.png" id="16_dron"]
+[ext_resource type="Texture2D" uid="uid://ddqstr00uf8j1" path="res://assets/icons/upgrade.png" id="17_upgrade"]
+[ext_resource type="Texture2D" uid="uid://duwqqmqy2t23g" path="res://assets/icons/insa1.png" id="18_insa1"]
+[ext_resource type="Texture2D" uid="uid://b13apff4c86p1" path="res://assets/icons/insa2.png" id="19_insa2"]
+[ext_resource type="Texture2D" uid="uid://b5v4xv5a21w5e" path="res://assets/icons/hizliSuCekme.png" id="20_su_cekme"]
+[ext_resource type="Texture2D" uid="uid://cq3thqgcmgqke" path="res://assets/icons/hizliKosma.png" id="21_kosma"]
+[ext_resource type="Texture2D" uid="uid://bqa8v3mmma8qc" path="res://assets/icons/DayanikliBot.png" id="22_bot"]
+[ext_resource type="Texture2D" uid="uid://s3qtw3mgywdr" path="res://assets/icons/kanca.png" id="23_kanca"]
+[ext_resource type="Texture2D" uid="uid://op8o3r8n5l0n" path="res://UInesneleri/PNG/Yellow/Default/button_rectangle_flat.png" id="24_btn_yellow"]
+[ext_resource type="Texture2D" uid="uid://dj8abimgck763" path="res://UInesneleri/PNG/Blue/Default/button_rectangle_flat.png" id="25_btn_blue"]
+[ext_resource type="Texture2D" uid="uid://u64bpwaxe1gv" path="res://UInesneleri/PNG/Red/Default/button_rectangle_flat.png" id="26_btn_red"]
+[ext_resource type="Texture2D" uid="uid://b4ee6cmgqo15i" path="res://UInesneleri/PNG/Grey/Default/button_rectangle_flat.png" id="27_panel_grey"]
+[ext_resource type="PackedScene" path="res://scenes/ui/settings_menu.tscn" id="28_settings"]
+
+[node name="GameUI" type="CanvasLayer" unique_id=1586478446]
+process_mode = 3
+script = ExtResource("2_script")
+
+[node name="Control" type="Control" parent="." unique_id=659314771]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HUD" type="Control" parent="Control" unique_id=1742989838]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TopCenter" type="HBoxContainer" parent="Control/HUD" unique_id=1096890207]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 20.0
+offset_right = 250.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CoinBox" type="NinePatchRect" parent="Control/HUD/TopCenter" unique_id=184862291]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+texture = ExtResource("25_btn_blue")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CoinLabel" type="Label" parent="Control/HUD/TopCenter/CoinBox" unique_id=1254156660]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+text = "🪙 1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomCenter" type="HBoxContainer" parent="Control" unique_id=990213655]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -120.0
+offset_right = 350.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="UpgradeMain" type="VBoxContainer" parent="Control/BottomCenter" unique_id=1475619378]
+layout_mode = 2
+
+[node name="MainButton" type="Button" parent="Control/BottomCenter/UpgradeMain" unique_id=1001868487]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "GELISTIR"
+icon = ExtResource("17_upgrade")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="UpgradeSubs" type="Control" parent="Control/BottomCenter/UpgradeMain" unique_id=255384589]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Speed" type="Button" parent="Control/BottomCenter/UpgradeMain/UpgradeSubs" unique_id=263176881]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+text = "HIZLI SU
+100"
+icon = ExtResource("20_su_cekme")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="RunSpeed" type="Button" parent="Control/BottomCenter/UpgradeMain/UpgradeSubs" unique_id=1143587305]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+text = "KOSMA
+200"
+icon = ExtResource("21_kosma")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+
+[node name="Build1Main" type="VBoxContainer" parent="Control/BottomCenter" unique_id=264332076]
+layout_mode = 2
+
+[node name="MainButton" type="Button" parent="Control/BottomCenter/Build1Main" unique_id=1986137142]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "INSA 1"
+icon = ExtResource("18_insa1")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Build1Subs" type="Control" parent="Control/BottomCenter/Build1Main" unique_id=38919535]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Arıtıcı" type="Button" parent="Control/BottomCenter/Build1Main/Build1Subs" unique_id=448568756]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+text = "ARITICI
+80"
+icon = ExtResource("11_aritici")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Tuz" type="Button" parent="Control/BottomCenter/Build1Main/Build1Subs" unique_id=2097595464]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+text = "TUZDAN ARIT.
+100"
+icon = ExtResource("12_tuzdan")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+
+[node name="Taret" type="Button" parent="Control/BottomCenter/Build1Main/Build1Subs" unique_id=600906890]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+text = "TARET
+150"
+icon = ExtResource("14_taret")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Build2Main" type="VBoxContainer" parent="Control/BottomCenter" unique_id=1459772060]
+layout_mode = 2
+
+[node name="MainButton" type="Button" parent="Control/BottomCenter/Build2Main" unique_id=1922537928]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 14
+text = "INSA 2"
+icon = ExtResource("19_insa2")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Build2Subs" type="Control" parent="Control/BottomCenter/Build2Main" unique_id=221234984]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Bomba" type="Button" parent="Control/BottomCenter/Build2Main/Build2Subs" unique_id=2009320878]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+text = "BOMBA
+200"
+icon = ExtResource("15_bomba")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Dron" type="Button" parent="Control/BottomCenter/Build2Main/Build2Subs" unique_id=295638428]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 0
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 9
+text = "DRON
+250"
+icon = ExtResource("16_dron")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="SettingsPopup" type="Control" parent="Control" unique_id=989530764]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundDim" type="ColorRect" parent="Control/SettingsPopup" unique_id=393445895]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="MainPanel" type="NinePatchRect" parent="Control/SettingsPopup" unique_id=801067583]
+custom_minimum_size = Vector2(400, 450)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -225.0
+offset_right = 200.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_panel_grey")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="Control/SettingsPopup/MainPanel" unique_id=704518205]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Control/SettingsPopup/MainPanel/VBox" unique_id=2140955729]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.4, 0.2, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 32
+text = "AYARLAR"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/SettingsPopup/MainPanel/VBox" unique_id=430991582]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="Control/SettingsPopup/MainPanel/VBox" unique_id=1112230126]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+text = "DEVAM ET"
+icon = ExtResource("24_btn_yellow")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Settings" type="Button" parent="Control/SettingsPopup/MainPanel/VBox" unique_id=1408958720]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "AYARLAR"
+icon = ExtResource("25_btn_blue")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="MainMenu" type="Button" parent="Control/SettingsPopup/MainPanel/VBox" unique_id=2008958877]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "ANA MENU"
+icon = ExtResource("25_btn_blue")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Exit" type="Button" parent="Control/SettingsPopup/MainPanel/VBox" unique_id=1408958719]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "CIKIS"
+icon = ExtResource("26_btn_red")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AlarmOverlay" type="ColorRect" parent="Control" unique_id=435458666]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0, 0, 0.2)
+
+[node name="AlarmLabel" type="Label" parent="Control/AlarmOverlay" unique_id=396991949]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 30
+text = "COIN AZALDI!
+BORULARI TAMIR ET!"
+horizontal_alignment = 1
+
+[node name="DebugSpawnBtn" type="Button" parent="Control" unique_id=998877661]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 100.0
+offset_right = 200.0
+offset_bottom = 140.0
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 12
+text = "SPAWN ENEMY"
+flat = false
+
+[node name="DebugMoneyBtn" type="Button" parent="Control" unique_id=887766554]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 150.0
+offset_right = 200.0
+offset_bottom = 190.0
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 12
+text = "GIVE 10000 COIN"
+flat = false
+
+[node name="SettingsMenu" parent="Control" instance=ExtResource("28_settings")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="AlarmTimer" type="Timer" parent="." unique_id=1020813861]
+wait_time = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=309957292]
+stream = ExtResource("3_sound")
+
+[connection signal="pressed" from="Control/BottomCenter/UpgradeMain/MainButton" to="." method="_on_upgrade_toggle"]
+[connection signal="pressed" from="Control/BottomCenter/Build1Main/MainButton" to="." method="_on_build1_toggle"]
+[connection signal="pressed" from="Control/BottomCenter/Build2Main/MainButton" to="." method="_on_build2_toggle"]
+[connection signal="pressed" from="Control/SettingsPopup/MainPanel/VBox/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/SettingsPopup/MainPanel/VBox/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Control/SettingsPopup/MainPanel/VBox/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/DebugSpawnBtn" to="." method="_on_debug_spawn_enemy"]
+[connection signal="pressed" from="Control/DebugMoneyBtn" to="." method="_on_debug_give_money"]
+[connection signal="timeout" from="AlarmTimer" to="." method="_on_alarm_timer_timeout"]

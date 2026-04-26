@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://jqfgj6futhpj"]
+
+[ext_resource type="Script" path="res://scenes/props/turret_logic.gd" id="1_lnjgt"]
+[ext_resource type="PackedScene" uid="uid://dqyob0olbao6q" path="res://scenes/props/turret.tscn" id="2_id7by"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k1c2w"]
+radius = 15.0
+
+[node name="Turret" type="Node3D"]
+script = ExtResource("1_lnjgt")
+
+[node name="Model" parent="." instance=ExtResource("2_id7by")]
+
+[node name="DetectionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("SphereShape3D_k1c2w")
+
+[node name="Muzzle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -1)
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

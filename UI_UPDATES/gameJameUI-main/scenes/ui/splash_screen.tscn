@@ -1,0 +1,351 @@
+[gd_scene format=3 uid="uid://bgujabhajly7w"]
+
+[ext_resource type="FontFile" uid="uid://cs7d5y38hlbxi" path="res://UInesneleri/Font/Kenney Future.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scenes/ui/splash_screen.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://bjlla32ohibjg" path="res://UInesneleri/PNG/Yellow/Default/button_rectangle_depth_gradient.png" id="3_btn_yellow"]
+[ext_resource type="Texture2D" uid="uid://cj6rduky7aw5d" path="res://UInesneleri/PNG/Blue/Default/button_rectangle_depth_gradient.png" id="4_panel_blue"]
+
+[sub_resource type="Gradient" id="Gradient_1"]
+offsets = PackedFloat32Array(0, 0.45, 1)
+colors = PackedColorArray(0, 0.8, 1, 1, 0.1, 0.4, 0.8, 1, 0.05, 0.1, 0.3, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1"]
+gradient = SubResource("Gradient_1")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 20.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 98, 0)
+scale_min = 8.0
+scale_max = 20.0
+color = Color(0.6, 0.9, 1, 0.4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Panel"]
+bg_color = Color(0.1, 0.2, 0.4, 0.8)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_TabActive"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_TabInactive"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.2, 0.4, 0.5)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Input"]
+bg_color = Color(0, 0, 0, 0.3)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_Yellow"]
+texture = ExtResource("3_btn_yellow")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 15.0
+region_rect = Rect2(0, 0, 190, 49)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Red"]
+bg_color = Color(0.8, 0.2, 0.2, 0.8)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.4, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="SplashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1")
+expand_mode = 1
+
+[node name="Particles" type="GPUParticles2D" parent="Background"]
+position = Vector2(960, -50)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_1")
+lifetime = 5.0
+preprocess = 5.0
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Title" type="Label" parent="Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/outline_size = 40
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 100
+text = "SU SAVAR"
+horizontal_alignment = 1
+
+[node name="SettingsPanel" type="PanelContainer" parent="Content"]
+custom_minimum_size = Vector2(700, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_Panel")
+
+[node name="Tabs" type="TabContainer" parent="Content/SettingsPanel"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_TabActive")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_TabInactive")
+theme_override_styles/panel = SubResource("StyleBoxFlat_Panel")
+
+[node name="GENEL" type="MarginContainer" parent="Content/SettingsPanel/Tabs"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="Content/SettingsPanel/Tabs/GENEL"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="NameSection" type="VBoxContainer" parent="Content/SettingsPanel/Tabs/GENEL/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Content/SettingsPanel/Tabs/GENEL/VBox/NameSection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+text = "OYUNCU ADI"
+horizontal_alignment = 1
+
+[node name="NameInput" type="LineEdit" parent="Content/SettingsPanel/Tabs/GENEL/VBox/NameSection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_Input")
+placeholder_text = "ADINIZI YAZIN"
+alignment = 1
+max_length = 15
+
+[node name="ExitButton" type="Button" parent="Content/SettingsPanel/Tabs/GENEL/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_Red")
+text = "OYUNDAN CIK"
+
+[node name="GORUNTU" type="MarginContainer" parent="Content/SettingsPanel/Tabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Grid" type="GridContainer" parent="Content/SettingsPanel/Tabs/GORUNTU"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="ResLabel" type="Label" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+text = "COZUNURLUK"
+
+[node name="ResolutionBtn" type="OptionButton" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+
+[node name="FpsLabel" type="Label" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "FPS SINIRI"
+
+[node name="FpsBtn" type="OptionButton" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+
+[node name="TexLabel" type="Label" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "DOKU KALITESI"
+
+[node name="TextureBtn" type="OptionButton" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+
+[node name="WinLabel" type="Label" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "TAM EKRAN"
+
+[node name="WindowModeBtn" type="CheckButton" parent="Content/SettingsPanel/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SES" type="MarginContainer" parent="Content/SettingsPanel/Tabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="Content/SettingsPanel/Tabs/SES"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Master" type="VBoxContainer" parent="Content/SettingsPanel/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/SettingsPanel/Tabs/SES/VBox/Master"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "GENEL SES"
+
+[node name="MasterSlider" type="HSlider" parent="Content/SettingsPanel/Tabs/SES/VBox/Master"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="Music" type="VBoxContainer" parent="Content/SettingsPanel/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/SettingsPanel/Tabs/SES/VBox/Music"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "MUZIK"
+
+[node name="MusicSlider" type="HSlider" parent="Content/SettingsPanel/Tabs/SES/VBox/Music"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="SFX" type="VBoxContainer" parent="Content/SettingsPanel/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/SettingsPanel/Tabs/SES/VBox/SFX"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "EFEKTLER (SFX)"
+
+[node name="SfxSlider" type="HSlider" parent="Content/SettingsPanel/Tabs/SES/VBox/SFX"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="Dialogue" type="VBoxContainer" parent="Content/SettingsPanel/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/SettingsPanel/Tabs/SES/VBox/Dialogue"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "DIYALOGLAR"
+
+[node name="DialogueSlider" type="HSlider" parent="Content/SettingsPanel/Tabs/SES/VBox/Dialogue"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="StartButton" type="Button" parent="Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.2, 0.1, 0, 1)
+theme_override_colors/font_hover_color = Color(0.4, 0.2, 0, 1)
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_Yellow")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_Yellow")
+theme_override_styles/hover = SubResource("StyleBoxTexture_Yellow")
+text = "OYUNA GIR"
+
+[node name="SubText" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.8)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 20
+text = "DUNYAYI SIZINTILARDAN KURTAR!"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Content/SettingsPanel/Tabs/GENEL/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Content/StartButton" to="." method="_on_start_button_pressed"]

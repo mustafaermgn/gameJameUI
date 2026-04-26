@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh6iark7vprva"]
+
+[ext_resource type="Script" uid="uid://t5c77ps0l36u" path="res://scenes/world/world_generator.gd" id="1_wg"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1"]
+geometry_parsed_geometry_type = 2
+agent_radius = 0.4
+agent_height = 1.4
+
+[node name="WorldGenerator" type="NavigationRegion3D" unique_id=496991494]
+navigation_mesh = SubResource("NavigationMesh_1")
+script = ExtResource("1_wg")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=95591654]
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false

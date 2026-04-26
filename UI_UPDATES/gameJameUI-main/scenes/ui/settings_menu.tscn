@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://cs87naj5r6k"]
+
+[ext_resource type="FontFile" uid="uid://cs7d5y38hlbxi" path="res://UInesneleri/Font/Kenney Future.ttf" id="1_font"]
+[ext_resource type="Script" path="res://scenes/ui/settings_menu.gd" id="2_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Panel"]
+bg_color = Color(0.1, 0.2, 0.4, 0.95)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 10
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_TabActive"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0.6, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_TabInactive"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.2, 0.4, 0.5)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Input"]
+bg_color = Color(0, 0, 0, 0.3)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_Close"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.8, 0.4, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 6
+border_color = Color(0.4, 0.2, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_Title"]
+font = ExtResource("1_font")
+font_size = 32
+font_color = Color(1, 0.9, 0, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_script")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="MainPanel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(700, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_Panel")
+
+[node name="VBox" type="VBoxContainer" parent="MainPanel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MainPanel/VBox"]
+layout_mode = 2
+text = "SES VE GORUNTU AYARLARI"
+label_settings = SubResource("LabelSettings_Title")
+horizontal_alignment = 1
+
+[node name="Tabs" type="TabContainer" parent="MainPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_TabActive")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_TabInactive")
+theme_override_styles/panel = SubResource("StyleBoxFlat_Panel")
+
+[node name="GORUNTU" type="MarginContainer" parent="MainPanel/VBox/Tabs"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Grid" type="GridContainer" parent="MainPanel/VBox/Tabs/GORUNTU"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="ResLabel" type="Label" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_font")
+text = "COZUNURLUK"
+
+[node name="ResolutionBtn" type="OptionButton" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+
+[node name="FpsLabel" type="Label" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "FPS SINIRI"
+
+[node name="FpsBtn" type="OptionButton" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+
+[node name="TexLabel" type="Label" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "DOKU KALITESI"
+
+[node name="TextureBtn" type="OptionButton" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 45)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+
+[node name="WinLabel" type="Label" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "TAM EKRAN"
+
+[node name="WindowModeBtn" type="CheckButton" parent="MainPanel/VBox/Tabs/GORUNTU/Grid"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SES" type="MarginContainer" parent="MainPanel/VBox/Tabs"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="MainPanel/VBox/Tabs/SES"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Master" type="VBoxContainer" parent="MainPanel/VBox/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/VBox/Tabs/SES/VBox/Master"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "GENEL SES"
+
+[node name="MasterSlider" type="HSlider" parent="MainPanel/VBox/Tabs/SES/VBox/Master"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="Music" type="VBoxContainer" parent="MainPanel/VBox/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/VBox/Tabs/SES/VBox/Music"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "MUZIK"
+
+[node name="MusicSlider" type="HSlider" parent="MainPanel/VBox/Tabs/SES/VBox/Music"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="SFX" type="VBoxContainer" parent="MainPanel/VBox/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/VBox/Tabs/SES/VBox/SFX"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "EFEKTLER (SFX)"
+
+[node name="SfxSlider" type="HSlider" parent="MainPanel/VBox/Tabs/SES/VBox/SFX"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="Dialogue" type="VBoxContainer" parent="MainPanel/VBox/Tabs/SES/VBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainPanel/VBox/Tabs/SES/VBox/Dialogue"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_font")
+text = "DIYALOGLAR"
+
+[node name="DialogueSlider" type="HSlider" parent="MainPanel/VBox/Tabs/SES/VBox/Dialogue"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 70.0
+
+[node name="CloseButton" type="Button" parent="MainPanel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_font")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_Close")
+text = "KAPAT"

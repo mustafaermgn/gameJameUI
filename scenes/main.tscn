@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bblccglbo3xs6"]
+
+[ext_resource type="Script" uid="uid://bvrbnfu1uirmr" path="res://scenes/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://bh6iark7vprva" path="res://scenes/world/world_generator.tscn" id="2_wg"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="3_pl"]
+[ext_resource type="Script" uid="uid://33b2sak3c36n" path="res://scenes/props/pipe_system.gd" id="4_ps"]
+[ext_resource type="Script" uid="uid://uj08j7xylbqj" path="res://scenes/props/pipe_placement.gd" id="5_pp"]
+[ext_resource type="Script" uid="uid://cl2noqiglmb17" path="res://scenes/ui/hud.gd" id="6_hud"]
+
+[node name="Main" type="Node3D" unique_id=1619185830]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=216914274]
+
+[node name="WorldGenerator" parent="." unique_id=934436295 instance=ExtResource("2_wg")]
+
+[node name="PipeSystem" type="Node3D" parent="." unique_id=615567276]
+script = ExtResource("4_ps")
+corner_position_offset = Vector3(-0.08, 0, -0.08)
+t_split_position_offset = Vector3(0, 0, -0.077)
+
+[node name="Player" parent="." unique_id=1885294862 instance=ExtResource("3_pl")]
+
+[node name="PipePlacement" type="Node3D" parent="Player" unique_id=74378221]
+script = ExtResource("5_pp")
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1241417739]
+script = ExtResource("6_hud")

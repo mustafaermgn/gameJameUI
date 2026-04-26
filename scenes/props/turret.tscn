@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dqyob0olbao6q"]
+
+[ext_resource type="PackedScene" uid="uid://b03dx0ob8hq11" path="res://models/props/turret_single.glb" id="1_3oylf"]
+
+[node name="turret_single2" unique_id=158320621 instance=ExtResource("1_3oylf")]
+
+[node name="turret_single" parent="." index="0" unique_id=1180090678]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

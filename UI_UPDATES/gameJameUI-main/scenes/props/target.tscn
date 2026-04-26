@@ -1,0 +1,23 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/props/target.gd" id="1_horxj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tpvtx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xxndg"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2or4n"]
+material = SubResource("StandardMaterial3D_xxndg")
+
+[node name="Target" type="CharacterBody3D" unique_id=2089645957]
+collision_layer = 2
+script = ExtResource("1_horxj")
+
+[node name="@CollisionShape3D@6" type="CollisionShape3D" parent="." unique_id=1765531431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_tpvtx")
+
+[node name="@MeshInstance3D@7" type="MeshInstance3D" parent="." unique_id=1283172946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_2or4n")
